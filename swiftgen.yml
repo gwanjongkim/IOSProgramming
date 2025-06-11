@@ -1,0 +1,11 @@
+# SwiftGen configuration – TravelGuide
+
+colors:
+  inputs:              # ❶ JSON 경로
+    - Design/colors.json
+  outputs:             # ❷ 생성 파일 경로
+    - templateName: swift5
+      output: Sources/Support/UIColor+Tokens.swift
+      params:
+        enumName: TGColor
+        publicAccess: true
