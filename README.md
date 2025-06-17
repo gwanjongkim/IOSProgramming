@@ -36,6 +36,8 @@ TravelGuide 설명서
 	5.	More 탭 (내 정보·설정)
 	•	익명 ↔ Apple 로그인, 로그아웃
 	•	푸시 알림 토글, 캐시 삭제, 앱 버전
+ 2.2 프로젝트 구조
+ 	![image](https://github.com/user-attachments/assets/cc459b47-2f2b-4afe-a794-0c32229556c9)
 
  2.3 결과물 (스크린샷)
 	1.	메인 목록 화면
