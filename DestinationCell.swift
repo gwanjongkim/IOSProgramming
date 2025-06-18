@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import Combine
 
 final class DestinationCell: UITableViewCell {
     static let reuseID = "DestinationCell"
@@ -19,6 +20,9 @@ final class DestinationCell: UITableViewCell {
     // 즐겨찾기 토글 이벤트를 VC로 넘길 클로저
     var onToggle: (() -> Void)?
 
+    private var favCancellable: AnyCancellable?
+    private var currentID: String?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureLayouts()
@@ -66,8 +70,17 @@ final class DestinationCell: UITableViewCell {
     }
 
     func configure(with destination: Destination) {
+        currentID = destination.id
+        favCancellable?.cancel()
+        favCancellable = FavoritesStore.shared.$favorites
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] favs in
+                guard let self, let id = self.currentID else { return }
+                self.updateStar(isFav: favs.contains(id))
+            }
+        
         titleLabel.text = destination.title
-        updateStar(isFav: destination.isFavorite)
+        updateStar(isFav: FavoritesStore.shared.contains(id: destination.id))
 
         if let url = destination.thumbnailURL {
             let options: KingfisherOptionsInfo = [
@@ -110,6 +123,9 @@ final class DestinationCell: UITableViewCell {
         super.prepareForReuse()
         thumb.kf.cancelDownloadTask()
         thumb.image = nil
+        favCancellable?.cancel()
+        favCancellable = nil
+        currentID = nil
         onToggle = nil
     }
 }
