@@ -53,9 +53,12 @@ TravelGuide 설명서
 
 ![Simulator Screenshot - iPhone 16 Pro - 2025-06-17 at 09 59 44](https://github.com/user-attachments/assets/37a16941-ff6c-41d6-810b-5fc506df6c5d)
 
+2.4설명 영상
+https://youtube.com/shorts/KXj894moR9Y?feature=share
 2.5 관련 기술
 구분      기술/라이브러리                        설명
 동기화      FirebaseAuth, Firestore           익명/Apple 로그인, 즐겨찾기 실시간 동기화
 ML 추천    Core ML (MLRecommender), CBIndex  협업 필터링, 콘텐츠 기반 유사도, 거리 보정
 AR        ARKit, SceneKit, CoreLocation     증강현실 컴퍼스, GPS 위치
 이미지 처리  Kingfisher                        이미지 비동기 다운로드/캐시
+
